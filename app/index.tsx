@@ -8,6 +8,9 @@ export default function Welcome() {
       <Link href="/login">
         Login
       </Link>
+      <Link href="/register">
+        Register
+      </Link>
 
     </View>
   );
