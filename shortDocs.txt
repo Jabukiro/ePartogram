@@ -1,0 +1,12 @@
+Proposed Features
+-- Notepad: A place to make notes about the patient. Allow to make voicenotes as well.
+-- when the worker opens the notepad, it should automatically input the date and time to contextualise the note.
+-- Any other relevant formating or information may be inputted to facilitate the worker.
+
+17/02/2025
+--compnents button.txt: the labelButton property taken by Button component has an any type.
+--Applying the StyleProps<TextStyle> makes it impossible to `...labelStyle`. Workaround? Need a deeper understanding of typescript.
+
+18/02/2025
+-- `...labelStyle` issue resolved. type of labelStyle possibly resolved to non-objects outside of null/undefined.
+-- Thus it didn't make sense to use the spread operator on them.
