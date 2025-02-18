@@ -6,7 +6,7 @@ import { MainContainer, MyTextInput, MyButton } from '@/components';
 import { addActivePatient, toRFC3339 } from '@/api';
 import { useAppTheme } from './_layout';
 
-import { Patient, PatientDemographics } from '@/components/types';
+import { DataPoint, Patient, PatientDemographics } from '@/components/types';
 export default function RegisterPatientScreen() {
     const defaultPatientDemo: PatientDemographics = {
         first_name: "Fridah",
@@ -35,11 +35,11 @@ export default function RegisterPatientScreen() {
         const newPatient: Patient = {
             demographics: patient,
             status: "Attention",
-            data: {
-                fhr: newDataPoint("FHR", "180", toRFC3339()),
-                dilation: newDataPoint("FHR", "4", toRFC3339()),
-                count: newDataPoint("FHR", "140", toRFC3339())
-            }
+            data: [
+                { key: "fhr", display_name: "Fetal Heart Rate", "reading": "130", next_reading: toRFC3339() },
+                { key: "dilation", display_name: "Dilation", "reading": "9", next_reading: toRFC3339() },
+                { key: "count", display_name: "Count", "reading": "4", next_reading: toRFC3339() }
+            ]
         }
         addActivePatient(newPatient).then(() => router.replace('/'));
     }
@@ -81,11 +81,4 @@ export default function RegisterPatientScreen() {
             </MainContainer>
         </ScrollView>
     )
-}
-function newDataPoint(display_name: string, reading = "...", next_reading: string) {
-    return {
-        display_name,
-        reading,
-        next_reading
-    }
 }
