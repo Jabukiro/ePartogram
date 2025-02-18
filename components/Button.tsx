@@ -3,7 +3,7 @@ import { StyleProp, TextStyle } from 'react-native';
 import { Button, ButtonProps } from 'react-native-paper';
 
 interface Props extends ButtonProps {
-    size: "large",
+    size: "large" | "medium" | "small",
 }
 
 
@@ -14,11 +14,13 @@ export default function MyButton({ size, labelStyle, ...rest }: Props) {
         <Button labelStyle={{ ...(typeof labelStyle == "object" ? labelStyle : {}), fontSize: setFontSize(size) }} {...rest} />
     )
 }
-const setFontSize = (size: Props["size"]) => {
+const setFontSize = (size: Props["size"]): number => {
     switch (size) {
         case 'large':
             return 18;
-        default:
-            return undefined
+        case 'medium':
+            return 14;
+        case 'small':
+            return 12;
     }
 }
