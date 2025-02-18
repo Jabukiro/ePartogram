@@ -1,3 +1,6 @@
+import { Dispatch, SetStateAction } from "react"
+
+export type StateProps<T, U=Dispatch<SetStateAction<T>>> = [T, U];
 export type Province = "Central"
 |"Copperbelt"
 |"Eastern"
@@ -26,10 +29,17 @@ export interface PatientDemographics {
     literacy: string
     religion: string
 }
+export type PatientStatus = "Normal" | "Attention" | "Alert";
+export interface DataPoint{
+    key: string
+    display_name: string,
+    reading: string
+    next_reading: string//RFC3339 Time Fomat
+}
 export interface Patient {
     demographics: PatientDemographics,
-    status: "Alert" | "Attention",
-    data: Object
+    status: PatientStatus,
+    data: Array<DataPoint>
 }
 const patientDemKeys = ["marital_status", "country", "province", "district", "suburb", "literacy", "religion"]
 export function isPatient(obj: Object): obj is PatientDemographics{
