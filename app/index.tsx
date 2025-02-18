@@ -14,6 +14,9 @@ export default function Welcome() {
       <Link href="/registerPatient">
         Add Patient
       </Link>
+      <Link href="/patientListing">
+        Active Patients
+      </Link>
 
     </View>
   );
