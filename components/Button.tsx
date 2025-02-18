@@ -9,9 +9,9 @@ interface Props extends ButtonProps {
 
 
 
-export default function MyButton({ size, ...rest }: Props) {
+export default function MyButton({ size, labelStyle, ...rest }: Props) {
     return (
-        <Button labelStyle={{ ...(typeof rest.labelStyle == "object" ? rest.labelStyle : {}), fontSize: setFontSize(size) }} {...rest} />
+        <Button labelStyle={{ ...(typeof labelStyle == "object" ? labelStyle : {}), fontSize: setFontSize(size) }} {...rest} />
     )
 }
 const setFontSize = (size: Props["size"]) => {
