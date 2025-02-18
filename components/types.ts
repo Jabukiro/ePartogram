@@ -14,7 +14,7 @@ export interface HealthWorker {
     district: "",
     address: "",
 }
-export type PatientDemographics = {
+export interface PatientDemographics {
     first_name: string
     surname: string
     dob: string
@@ -26,7 +26,7 @@ export type PatientDemographics = {
     literacy: string
     religion: string
 }
-export type Patient = {
+export interface Patient {
     demographics: PatientDemographics,
     status: "Alert" | "Attention",
     data: Object
