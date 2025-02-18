@@ -10,7 +10,7 @@ export default function MainContainer({ full = true, style, ...rest }: Props): R
     return (
         <View style={{
             ...(typeof style == "object" ? style : {}),
-            backgroundColor: "#fff", paddingHorizontal: 100, paddingVertical: theme.spacing.p_2, height: full ? "100%" : undefined
+            backgroundColor: "#fff", paddingHorizontal: theme.spacing.p_1, paddingVertical: theme.spacing.p_2, height: full ? "100%" : undefined
         }} {...rest} />
     )
 }
