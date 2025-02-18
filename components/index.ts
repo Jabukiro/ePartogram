@@ -1,4 +1,7 @@
+import Clock from './Clock';
 import MainContainer from './Container';
 import MyTextInput from './TextInput';
 import MyButton from './Button';
-export {MainContainer, MyButton, MyTextInput};
+import PatientHomeCard from './PatientCard';
+import PressableGeneral from './Pressable';
+export {Clock, PatientHomeCard ,PressableGeneral,MainContainer, MyButton, MyTextInput};
