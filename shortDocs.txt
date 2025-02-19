@@ -10,3 +10,7 @@ Proposed Features
 18/02/2025
 -- `...labelStyle` issue resolved. type of labelStyle possibly resolved to non-objects outside of null/undefined.
 -- Thus it didn't make sense to use the spread operator on them.
+
+19/02/2025
+-- rewriting finished
+-- starting work on the graph display
