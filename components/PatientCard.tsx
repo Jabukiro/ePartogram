@@ -3,15 +3,16 @@ import { Alert, Animated, Pressable, StyleSheet, View } from 'react-native';
 import { Button, Surface, SurfaceProps, Text, TextInput, useTheme } from 'react-native-paper';
 import { useTimer } from 'react-timer-hook';
 import { AntDesign, FontAwesome } from '@expo/vector-icons';
-import { PressableGeneral } from '@/components';
+import PressableGeneral from './Pressable';
 import { DataPoint, Patient, PatientStatus } from './types';
 import { AppTheme, useAppTheme } from '@/app/_layout';
 
 interface Props {
     patient: Patient
+    onExpand?: any
 }
 
-export default function PatientHomeCard({ patient }: Props) {
+export default function PatientHomeCard({ patient, onExpand }: Props) {
     //console.log("Patient details: ", patient);
     const theme = useAppTheme();
     const [patientStatus, setPatientStatus] = React.useState(patient.status);
@@ -32,7 +33,7 @@ export default function PatientHomeCard({ patient }: Props) {
                         paddingHorizontal: theme.spacing.p_2,
                         paddingTop: theme.spacing.p_05,
                     }}
-                    onPress={toggleIsExpanded}>
+                    onPress={(onExpand ?? toggleIsExpanded)}>
                     <FontAwesome name="expand" size={24} color={theme.colors.primary} />
                 </PressableGeneral>
             </View>
@@ -53,10 +54,10 @@ export default function PatientHomeCard({ patient }: Props) {
                         >{duetime > 0 ? `DUE in ${minutes}` : 'OVERDUE'}</Button>
                     </View>
                 </View>
-                <View style={{ flex: 2, flexDirection: "row", alignItems: "center", justifyContent: "center" }}>
+                <View style={{ flex: 2, flexDirection: "row", alignItems: "flex-end", justifyContent: "flex-start" }}>
                     {
                         patient.data.map((dataPoint, idx) => (
-                            <View key={dataPoint.key} style={{ flex: 1, alignItems: "center" }}>
+                            <View key={dataPoint.key} style={{ flex: 1 }}>
                                 <Text style={{ fontSize: 10 }}>{dataPoint.display_name}</Text>
                                 <Text>{dataPoint.reading}</Text>
                             </View>
