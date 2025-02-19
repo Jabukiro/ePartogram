@@ -41,7 +41,7 @@ export default function RegisterPatientScreen() {
                 { key: "count", display_name: "Count", "reading": "4", next_reading: toRFC3339() }
             ]
         }
-        addActivePatient(newPatient).then(() => router.replace('/'));
+        addActivePatient(newPatient).then(() => router.replace('/patientListing'));
     }
     return (
         <ScrollView contentContainerStyle={{ minHeight: "100%" }}>
