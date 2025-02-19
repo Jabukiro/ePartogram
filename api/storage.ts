@@ -25,7 +25,7 @@ export async function storeData(key:string, jsonValue:Object) {
 export async function getData(key: string): Promise<Object | null | undefined> {
     try {
         const value = await AsyncStorage.getItem(key);
-        value == null ? null : JSON.parse(value);
+        return value == null ? null : JSON.parse(value);
     } catch (e) {
         console.log(e)
         return null;
@@ -41,14 +41,12 @@ export async function retrieveActivePatients(): Promise<Array<Patient> | [] > {
         if (value == null){
             return []
         } else {
-            return value as Array<Patient>
+            return value as Array<Patient>;
         }
     } catch (e) {
         console.log(e)
         return []
         // error reading value
-    } finally {
-        return []
     }
 
 }
