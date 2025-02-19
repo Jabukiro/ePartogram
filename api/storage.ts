@@ -65,7 +65,7 @@ export async function addActivePatient(newPatient: Patient) {
     if (activePatients.length == 0) {
         //no existing record
         try {
-            await storeData(ACTIVEPATIENTSKEY, [activePatients]);
+            await storeData(ACTIVEPATIENTSKEY, [newPatient]);
         } catch (e) {
             console.log(e)
             return 
