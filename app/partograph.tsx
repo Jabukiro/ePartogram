@@ -25,6 +25,7 @@ export default function PartographScreen() {
             ))}
           </View>
           <FetalHeartRateGrid theme={theme}></FetalHeartRateGrid>
+          <LiquorMouldingGrid theme={theme}></LiquorMouldingGrid>
         </Surface>
       </View >
     </View >
@@ -52,6 +53,21 @@ function FetalHeartRateGrid({ theme }: GridProps) {
     </View>
   )
 }
+
+function LiquorMouldingGrid({ theme }: GridProps) {
+  return (
+    <View style={{ flexDirection: "row", width: "100%" }}>
+      <View style={{ flex: 2, flexDirection: "column", alignItems: "flex-end", marginRight: theme.spacing.p_05 }}>
+        <Text style={{ fontSize: 12 }}>Liquor</Text>
+        <Text style={{ fontSize: 12 }}>Moulding</Text>
+      </View>
+      <View style={{ flex: 8, height: "100%" }}>
+        {gridGenerator("liquorMoulding", 2, 24).map(el => el)}
+      </View>
+    </View>
+  )
+}
+
 
 
 function gridGenerator(gridKey: string, rows: number, columns: number) {
