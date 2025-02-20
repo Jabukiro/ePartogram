@@ -80,7 +80,7 @@ function LiquorMouldingGrid({ theme }: GridProps) {
 function ContractionsGrid({ theme }: GridProps) {
   return (
     <View style={{ flexDirection: "row", width: "100%" }}>
-      <View style={{ flex: 1, paddingRight: theme.spacing.p_05, alignSelf: "center" }}>
+      <View style={{ flex: 1, alignSelf: "center" }}>
         <Text style={{ fontSize: 12 }}>Contractions Per 10 mins</Text>
       </View>
       <View style={{ flex: 1, flexDirection: "column" }}>
