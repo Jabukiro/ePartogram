@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { View } from 'react-native';
 import { Text, Surface } from 'react-native-paper';
-import { useAppTheme } from './_layout';
+import { AppTheme, useAppTheme } from './_layout';
 
 const firstRow: Array<[string, string, number]> = [["name", "Name", 4], ["gravida", "Gravida", 2], ["para", "Para", 2], ["hospitalNo", "Hospital No", 2]]
 const secondRow: Array<[string, string, number]> = [["dateOfAdmission", "Date", 3], ["timeOfAdmission", "Time", 3], ["rupturedMembrane", "Ruptured membranes", 3], ["hours", "hours", 1]]
@@ -10,8 +10,6 @@ const columns = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 
 export default function PartographScreen() {
   const theme = useAppTheme();
-  const fetalHeartRate = gridGenerator("fhr", 8, 24);
-
   return (
     <View>
       <View style={{ backgroundColor: "#fff", paddingHorizontal: theme.spacing.p_05, paddingVertical: theme.spacing.p_1, height: "100%" }}>
@@ -26,12 +24,35 @@ export default function PartographScreen() {
               <Text key={`paragraphRowKey-${item[0]}`} style={{ flex: item[2], textAlign: "left" }}>{item[1]}:</Text>
             ))}
           </View>
-          {fetalHeartRate.map(element => element)}
+          <FetalHeartRateGrid theme={theme}></FetalHeartRateGrid>
         </Surface>
       </View >
     </View >
   )
 }
+interface GridProps {
+  theme: AppTheme
+}
+
+function FetalHeartRateGrid({ theme }: GridProps) {
+  const measurements = ["180", "170", "160", "150", "140", "130", "120", "110", "100"]
+  return (
+    <View style={{ flexDirection: "row", width: "100%" }}>
+      <View style={{ flex: 1, paddingRight: theme.spacing.p_05, alignSelf: "center" }}>
+        <Text style={{ textAlign: "right", fontSize: 12 }}>Fetal Heart Rate</Text>
+      </View>
+      <View style={{ flex: 1, flexDirection: "column" }}>
+        {measurements.map(measurement => (
+          <Text style={{}} key={`FHR-measurement-${measurement}`}>{measurement}</Text>
+        ))}
+      </View>
+      <View style={{ flex: 8, height: "100%", paddingTop: theme.spacing.p_1, paddingBottom: theme.spacing.p_1 }}>
+        {gridGenerator("fhr", 8, 24).map(el => el)}
+      </View>
+    </View>
+  )
+}
+
 
 function gridGenerator(gridKey: string, rows: number, columns: number) {
   const grid = [];
@@ -39,7 +60,7 @@ function gridGenerator(gridKey: string, rows: number, columns: number) {
     throw `Expected argument 'rows' and 'columns' to both be bigger than 0, instead got ${rows} ${columns}`;
   }
   for (let row = 0; row < rows; row++) {
-    grid.push(<View key={`${gridKey}-row-${row + 1}`} style={{ flexDirection: "row", height: 20 }}>{cellGenerator(gridKey, row, rows, columns)}</View>)
+    grid.push(<View key={`${gridKey}-row-${row + 1}`} style={{ flex: 1, flexDirection: "row" }}>{cellGenerator(gridKey, row, rows, columns)}</View>)
   }
   return grid;
 }
