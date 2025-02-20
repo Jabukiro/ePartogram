@@ -48,8 +48,8 @@ function FetalHeartRateGrid({ theme }: GridProps) {
   const measurements = ["180", "170", "160", "150", "140", "130", "120", "110", "100"]
   return (
     <View style={{ flexDirection: "row", width: "100%" }}>
-      <View style={{ flex: 1, paddingRight: theme.spacing.p_05, alignSelf: "center" }}>
-        <Text style={{ textAlign: "right", fontSize: 12 }}>Fetal Heart Rate</Text>
+      <View style={{ flex: 1, alignSelf: "center" }}>
+        <Text style={{ fontSize: 12 }}>Fetal Heart Rate</Text>
       </View>
       <View style={{ flex: 1, flexDirection: "column" }}>
         {measurements.map(measurement => (
@@ -81,7 +81,7 @@ function ContractionsGrid({ theme }: GridProps) {
   return (
     <View style={{ flexDirection: "row", width: "100%" }}>
       <View style={{ flex: 1, paddingRight: theme.spacing.p_05, alignSelf: "center" }}>
-        <Text style={{ textAlign: "right", fontSize: 12 }}>Contractions Per 10 mins</Text>
+        <Text style={{ fontSize: 12 }}>Contractions Per 10 mins</Text>
       </View>
       <View style={{ flex: 1, flexDirection: "column" }}>
         {["5", "4", "3", "2", "1"].map(measurement => (
