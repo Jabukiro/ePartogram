@@ -3,7 +3,7 @@ import { MD3LightTheme as DefaultTheme, PaperProvider, useTheme } from 'react-na
 
 const theme = {
   ...DefaultTheme,
-  roundness: 2,
+  roundness: 10,
   colors: {
     ...DefaultTheme.colors,
     primary: "#005abb",
