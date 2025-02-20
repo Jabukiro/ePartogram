@@ -1,3 +1,6 @@
+TODO:
+-- Remove Unused dependencies (goten from expo app tutorial)
+
 Proposed Features
 -- Notepad: A place to make notes about the patient. Allow to make voicenotes as well.
 -- when the worker opens the notepad, it should automatically input the date and time to contextualise the note.
@@ -14,3 +17,6 @@ Proposed Features
 19/02/2025
 -- rewriting finished
 -- starting work on the graph display
+
+20/02/2025
+-- trivial grids added to graph
