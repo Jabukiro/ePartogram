@@ -2,6 +2,7 @@ import * as React from 'react';
 import { View } from 'react-native';
 import { Text, Surface } from 'react-native-paper';
 import { AppTheme, useAppTheme } from './_layout';
+import { ScrollView } from 'react-native';
 
 const firstRow: Array<[string, string, number]> = [["name", "Name", 4], ["gravida", "Gravida", 2], ["para", "Para", 2], ["hospitalNo", "Hospital No", 2]]
 const secondRow: Array<[string, string, number]> = [["dateOfAdmission", "Date", 3], ["timeOfAdmission", "Time", 3], ["rupturedMembrane", "Ruptured membranes", 3], ["hours", "hours", 1]]
@@ -11,25 +12,27 @@ const columns = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 export default function PartographScreen() {
   const theme = useAppTheme();
   return (
-    <View>
-      <View style={{ backgroundColor: "#fff", paddingHorizontal: theme.spacing.p_05, paddingVertical: theme.spacing.p_1, height: "100%" }}>
-        <Surface style={{ paddingVertical: theme.spacing.p_05, paddingHorizontal: theme.spacing.p_1 }}>
-          <View style={{ height: 50, flexDirection: "row", borderBottomWidth: 2, borderBottomColor: "black" }}>
-            {firstRow.map((item, index) => (
-              <Text key={`paragraphRowKey-${item[0]}`} style={{ flex: item[2], textAlign: "left" }}>{item[1]}:</Text>
-            ))}
-          </View>
-          <View style={{ height: 50, flexDirection: "row", borderBottomWidth: 2, borderBottomColor: "black", marginBottom: theme.spacing.m_2 }}>
-            {secondRow.map((item, index) => (
-              <Text key={`paragraphRowKey-${item[0]}`} style={{ flex: item[2], textAlign: "left" }}>{item[1]}:</Text>
-            ))}
-          </View>
-          <View style={{ marginBottom: theme.spacing.m_2 }}><FetalHeartRateGrid theme={theme}></FetalHeartRateGrid></View>
+    <View style={{ backgroundColor: "#fff", paddingHorizontal: theme.spacing.p_05, paddingVertical: theme.spacing.p_1, height: "100%" }}>
+      <Surface elevation={3} style={{ zIndex: 1, paddingVertical: theme.spacing.p_05, paddingHorizontal: theme.spacing.p_1 }}>
+        <View style={{ height: 50, flexDirection: "row", borderBottomWidth: 2, borderBottomColor: "black" }}>
+          {firstRow.map((item, index) => (
+            <Text key={`paragraphRowKey-${item[0]}`} style={{ flex: item[2], textAlign: "left" }}>{item[1]}:</Text>
+          ))}
+        </View>
+        <View style={{ height: 50, flexDirection: "row", borderBottomWidth: 2, borderBottomColor: "black", marginBottom: theme.spacing.m_2 }}>
+          {secondRow.map((item, index) => (
+            <Text key={`paragraphRowKey-${item[0]}`} style={{ flex: item[2], textAlign: "left" }}>{item[1]}:</Text>
+          ))}
+        </View>
+      </Surface>
+      <ScrollView>
+        <Surface style={{ zIndex: 1, paddingVertical: theme.spacing.p_05, paddingHorizontal: theme.spacing.p_1 }}>
           <View style={{ marginBottom: theme.spacing.m_2 }}><FetalHeartRateGrid theme={theme}></FetalHeartRateGrid></View>
           <View style={{ marginBottom: theme.spacing.m_2 }}><LiquorMouldingGrid theme={theme}></LiquorMouldingGrid></View>
           <View style={{ marginBottom: theme.spacing.m_2 }}><ContractionsGrid theme={theme}></ContractionsGrid></View>
+          <View style={{ marginBottom: theme.spacing.m_2 }}><OxytocinGrid theme={theme}></OxytocinGrid></View>
         </Surface>
-      </View >
+      </ScrollView >
     </View >
   )
 }
@@ -88,6 +91,28 @@ function ContractionsGrid({ theme }: GridProps) {
   )
 }
 
+function OxytocinGrid({ theme }: GridProps) {
+  return (<View style={{ flexDirection: "row", width: "100%" }}>
+    <View style={{ flex: 2, flexDirection: "column" }}>
+      <Text style={{ fontSize: 12 }}>Oxytocin U/L</Text>
+      <Text style={{ fontSize: 12 }}>drops/min</Text>
+    </View>
+    <View style={{ flex: 8, height: "100%" }}>
+      {gridGenerator("oxytocin", 2, 24).map(el => el)}
+    </View>
+  </View>)
+}
+
+function TemperatureGrid({ theme }: GridProps) {
+  return (<View style={{ flexDirection: "row", width: "100%" }}>
+    <View style={{ flex: 2, flexDirection: "column" }}>
+      <Text style={{ fontSize: 12 }}>Temp °C</Text>
+    </View>
+    <View style={{ flex: 8, height: "100%" }}>
+      {gridGenerator("temperature", 1, 12).map(el => el)}
+    </View>
+  </View>)
+}
 function gridGenerator(gridKey: string, rows: number, columns: number) {
   const grid = [];
   if (rows <= 0 || columns <= 0) {
