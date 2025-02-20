@@ -124,15 +124,15 @@ function TemperatureGrid({ theme }: GridProps) {
 function UrineGrid({ theme }: GridProps) {
   return (
     <View style={{ flexDirection: "row", width: "100%" }}>
-      <View style={{ flex: 1, flexDirection: "column", justifyContent: "center" }}>
-        <Text style={{ fontSize: 12 }}>Urine</Text>
+      <View style={{ flex: 3, flexDirection: "column", justifyContent: "center" }}>
+        <Text style={{ fontSize: 10 }}>Urine</Text>
       </View>
-      <View style={{ flex: 3, flexDirection: "column" }}>
+      <View style={{ flex: 5, flexDirection: "column" }}>
         {["protein", "acetone", "volume"].map(measurement => (
-          <Text style={{}} key={`Contractions-${measurement}`}>{measurement}</Text>
+          <Text style={{ fontSize: 10 }} key={`Contractions-${measurement}`}>{measurement}</Text>
         ))}
       </View>
-      <View style={{ flex: 16, height: "100%" }}>
+      <View style={{ flex: 32, height: "100%" }}>
         {gridGenerator("temperature", 3, 12).map(el => el)}
       </View>
     </View>
