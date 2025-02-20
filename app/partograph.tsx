@@ -13,7 +13,10 @@ export default function PartographScreen() {
   const theme = useAppTheme();
   return (
     <View style={{ backgroundColor: "#fff", paddingHorizontal: theme.spacing.p_05, paddingVertical: theme.spacing.p_1, height: "100%" }}>
-      <Surface elevation={3} style={{ zIndex: 1, paddingVertical: theme.spacing.p_05, paddingHorizontal: theme.spacing.p_1 }}>
+      <Surface elevation={3} style={{
+        zIndex: 1, paddingVertical: theme.spacing.p_05, paddingHorizontal: theme.spacing.p_1,
+        borderBottomLeftRadius: theme.roundness, borderBottomRightRadius: theme.roundness
+      }}>
         <View style={{ height: 50, flexDirection: "row", borderBottomWidth: 2, borderBottomColor: "black" }}>
           {firstRow.map((item, index) => (
             <Text key={`paragraphRowKey-${item[0]}`} style={{ flex: item[2], textAlign: "left" }}>{item[1]}:</Text>
@@ -31,6 +34,7 @@ export default function PartographScreen() {
           <View style={{ marginBottom: theme.spacing.m_2 }}><LiquorMouldingGrid theme={theme}></LiquorMouldingGrid></View>
           <View style={{ marginBottom: theme.spacing.m_2 }}><ContractionsGrid theme={theme}></ContractionsGrid></View>
           <View style={{ marginBottom: theme.spacing.m_2 }}><OxytocinGrid theme={theme}></OxytocinGrid></View>
+          <View style={{ marginBottom: theme.spacing.m_2 }}><TemperatureGrid theme={theme}></TemperatureGrid></View>
         </Surface>
       </ScrollView >
     </View >
