@@ -35,6 +35,7 @@ export default function PartographScreen() {
           <View style={{ marginBottom: theme.spacing.m_2 }}><ContractionsGrid theme={theme}></ContractionsGrid></View>
           <View style={{ marginBottom: theme.spacing.m_2 }}><OxytocinGrid theme={theme}></OxytocinGrid></View>
           <View style={{ marginBottom: theme.spacing.m_2 }}><TemperatureGrid theme={theme}></TemperatureGrid></View>
+          <View style={{ marginBottom: theme.spacing.m_2 }}><UrineGrid theme={theme}></UrineGrid></View>
         </Surface>
       </ScrollView >
     </View >
@@ -108,15 +109,36 @@ function OxytocinGrid({ theme }: GridProps) {
 }
 
 function TemperatureGrid({ theme }: GridProps) {
-  return (<View style={{ flexDirection: "row", width: "100%" }}>
-    <View style={{ flex: 2, flexDirection: "column" }}>
-      <Text style={{ fontSize: 12 }}>Temp °C</Text>
+  return (
+    <View style={{ flexDirection: "row", width: "100%" }}>
+      <View style={{ flex: 2, flexDirection: "column" }}>
+        <Text style={{ fontSize: 12 }}>Temp °C</Text>
+      </View>
+      <View style={{ flex: 8, height: "100%" }}>
+        {gridGenerator("temperature", 1, 12).map(el => el)}
+      </View>
     </View>
-    <View style={{ flex: 8, height: "100%" }}>
-      {gridGenerator("temperature", 1, 12).map(el => el)}
-    </View>
-  </View>)
+  )
 }
+
+function UrineGrid({ theme }: GridProps) {
+  return (
+    <View style={{ flexDirection: "row", width: "100%" }}>
+      <View style={{ flex: 1, flexDirection: "column", justifyContent: "center" }}>
+        <Text style={{ fontSize: 12 }}>Urine</Text>
+      </View>
+      <View style={{ flex: 3, flexDirection: "column" }}>
+        {["protein", "acetone", "volume"].map(measurement => (
+          <Text style={{}} key={`Contractions-${measurement}`}>{measurement}</Text>
+        ))}
+      </View>
+      <View style={{ flex: 16, height: "100%" }}>
+        {gridGenerator("temperature", 3, 12).map(el => el)}
+      </View>
+    </View>
+  )
+}
+
 function gridGenerator(gridKey: string, rows: number, columns: number) {
   const grid = [];
   if (rows <= 0 || columns <= 0) {
