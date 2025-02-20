@@ -24,9 +24,10 @@ export default function PartographScreen() {
               <Text key={`paragraphRowKey-${item[0]}`} style={{ flex: item[2], textAlign: "left" }}>{item[1]}:</Text>
             ))}
           </View>
-          <FetalHeartRateGrid theme={theme}></FetalHeartRateGrid>
-          <LiquorMouldingGrid theme={theme}></LiquorMouldingGrid>
-          <ContractionsGrid theme={theme}></ContractionsGrid>
+          <View style={{ marginBottom: theme.spacing.m_2 }}><FetalHeartRateGrid theme={theme}></FetalHeartRateGrid></View>
+          <View style={{ marginBottom: theme.spacing.m_2 }}><FetalHeartRateGrid theme={theme}></FetalHeartRateGrid></View>
+          <View style={{ marginBottom: theme.spacing.m_2 }}><LiquorMouldingGrid theme={theme}></LiquorMouldingGrid></View>
+          <View style={{ marginBottom: theme.spacing.m_2 }}><ContractionsGrid theme={theme}></ContractionsGrid></View>
         </Surface>
       </View >
     </View >
@@ -58,7 +59,7 @@ function FetalHeartRateGrid({ theme }: GridProps) {
 function LiquorMouldingGrid({ theme }: GridProps) {
   return (
     <View style={{ flexDirection: "row", width: "100%" }}>
-      <View style={{ flex: 2, flexDirection: "column", alignItems: "flex-end", marginRight: theme.spacing.p_05 }}>
+      <View style={{ flex: 2, flexDirection: "column" }}>
         <Text style={{ fontSize: 12 }}>Liquor</Text>
         <Text style={{ fontSize: 12 }}>Moulding</Text>
       </View>
